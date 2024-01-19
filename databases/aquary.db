@@ -1,0 +1,8 @@
+-- INSERT INTO admins (admin_id, admin_name, password) VALUES ('6382599327','Gokul Sivakumar','Gssmcdob@#27');
+-- INSERT INTO admins (admin_id, admin_name, password) VALUES ('420419106010','Gokul S','gokul');
+CREATE TABLE admins (
+    admin_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    admin_name TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+INSERT INTO admins (admin_name, password) VALUES ('Gokul Sivakumar','Gssmcdob@#27')

@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS energy_cleaned_data_temp AS
+SELECT
+    iso_code,
+    country,
+    CAST(year AS INTEGER) AS year,
+    CAST(population AS INTEGER) AS population,
+    CAST(coal_consumption AS REAL) AS coal_consumption,
+    CAST(coal_production AS REAL) AS coal_production,
+    CAST(oil_production AS REAL) AS oil_production,
+    CAST(oil_consumption AS REAL) AS oil_consumption,
+    CAST(gas_production AS REAL) AS gas_production,
+    CAST(gas_consumption AS REAL) AS gas_consumption
+FROM energy_cleaned_data;
+
+-- Drop the original table
+DROP TABLE energy_cleaned_data;
+
+-- Create the original table with the new data types
+CREATE TABLE IF NOT EXISTS energy_cleaned_data (
+    iso_code TEXT,
+    country TEXT,
+    year INTEGER,
+    population INTEGER,
+    coal_consumption REAL,
+    coal_production REAL,
+    oil_production REAL,
+    oil_consumption REAL,
+    gas_production REAL,
+    gas_consumption REAL
+);
+
+-- Insert data from the temporary table into the new table
+INSERT INTO energy_cleaned_data
+SELECT * FROM energy_cleaned_data_temp;
+
+-- Drop the temporary table
+DROP TABLE energy_cleaned_data_temp;
+
+-- Commit the transaction
+COMMIT;

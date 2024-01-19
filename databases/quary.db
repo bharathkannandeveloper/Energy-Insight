@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS users (
+                UserID INTEGER PRIMARY KEY,
+                UserName TEXT UNIQUE,
+                Password TEXT,
+                Email TEXT,
+                Country TEXT,
+                AdminRole INTEGER DEFAULT 0
+            )
